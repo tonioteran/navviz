@@ -12,7 +12,7 @@
 
 #include <GLFW/glfw3.h>
 #include <iostream>
-
+#include <memory>
 #include "navviz/GlfwWrapper.hpp"
 
 namespace vv {
@@ -44,6 +44,17 @@ class GlfwAppManager {
   }
 
 };
+
+  
+template<typename T, typename... ARGS, typename = typename
+          std::enable_if<std::is_base_of<GlfwWrapper,T>::value>::type>
+std::unique_ptr<T> make_app(ARGS&&... args) {
+
+  std::unique_ptr<T> app{ new T{ std::forward<ARGS>(args)...} };
+  GlfwAppManager::startApp(app.get());
+  return app;
+
+}
 
 } // namespace vv
 

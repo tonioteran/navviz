@@ -33,6 +33,20 @@ GlfwWrapper::~GlfwWrapper() {
   glfwTerminate();
 }
 
+/* ************************************************************************** */
+void GlfwWrapper::onKeydown(GLFWwindow* window, int key, int code, int a, int mod) {
+  // Does nothing by default. Override to customize
+}
+  
+/* ************************************************************************** */
+void GlfwWrapper::onError(int error, const char* desc) {
+  // Does nothing by default
+}
+
+/* ************************************************************************** */
+void GlfwWrapper::onResize(GLFWwindow* window, int width, int height) {
+  glViewport(0, 0, width, height);
+}
 
 
 
