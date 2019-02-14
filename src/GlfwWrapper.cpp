@@ -48,7 +48,19 @@ void GlfwWrapper::onResize(GLFWwindow* window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
+/* ************************************************************************** */
+void GlfwWrapper::start() {
+  glfwLoop();
+}
 
+/* ************************************************************************** */
+void GlfwWrapper::glfwLoop() {
+  this->glLoop();
+
+  glfwSwapBuffers(window_);
+  glfwPollEvents();
+  std::cout << "reach the end of glfwLoop" << std::endl;
+}
 
 
 } // namespace vv

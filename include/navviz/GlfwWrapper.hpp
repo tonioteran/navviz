@@ -26,13 +26,14 @@ class GlfwWrapper {
   virtual ~GlfwWrapper();
 
   void start();
+  void glfwLoop();
 
   virtual void onKeydown(GLFWwindow* window, int key, int code, int a, int mod);
   virtual void onError(int error, const char* desc);
   virtual void onResize(GLFWwindow* window, int width, int height);
   virtual void glLoop() = 0;
 
-  GLFWwindow* window() const;
+  GLFWwindow* window() const { return window_; };
 
 };
 

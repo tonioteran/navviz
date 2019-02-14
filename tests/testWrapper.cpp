@@ -56,10 +56,13 @@ void ball::draw_ball()
     }
 
 	glEnd();
+  std::cout << "reach the end of draw_ball" << std::endl;
 }
 
-void ball::glLoop()
-{
+void ball::glLoop(){
+
+  std::cout << "calling glLoop() from ball!!!!" << std::endl;
+
 	float ratio = 800.0f / 600.0f;
 
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -86,6 +89,11 @@ void ball::glLoop()
 int main(void) {
 
   std::cout << "testing glfw wrappers" << std::endl;
+
+  auto app = vv::make_app<ball>("bouncing ball!", 800, 600);
+  while (1) {
+    app->start();
+  }
 
   return (0);
 
