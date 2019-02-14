@@ -15,8 +15,10 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
+#include <memory>
 #include "navviz/Shader.h"
 #include "navviz/Camera.h"
+#include "navviz/Environment.h"
 
 void processInput(GLFWwindow *window);
 void mouse_callback(GLFWwindow *window, double xpos, double ypos);
@@ -27,7 +29,7 @@ const unsigned int SCR_WIDTH  = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+vv::Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -39,6 +41,8 @@ float lastFrame = 0.0f;
 int main(void) {
 
   std::cout << "Texture tests!" << std::endl;
+
+  auto env(std::make_shared<vv::Environment>());
 
   // initialize
   glfwInit();
@@ -71,8 +75,8 @@ int main(void) {
   glEnable(GL_DEPTH_TEST);
 
   // load shaders from source file
-  Shader ourShader("/home/tonio/repos/opengl/apps/projectionShader.vs",
-                   "/home/tonio/repos/opengl/apps/transformShader.fs");
+  Shader ourShader("/home/tonio/repos/navviz/resources/shaders/simpleShader.vs",
+                   "/home/tonio/repos/navviz/resources/shaders/simpleShader.fs");
 
   // setup vertex data for the cube
   float vertices[] = {
