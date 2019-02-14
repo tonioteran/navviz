@@ -19,7 +19,7 @@ class GlfwWrapper {
 
  public:
 
-  GLFWwindow *window_;
+  GLFWwindow* window_;
   
   // constructors, destructors
   GlfwWrapper(const std::string &scr_title, int scr_width, int scr_height);
@@ -27,10 +27,10 @@ class GlfwWrapper {
 
   void start();
 
-  virtual void onKeydown();
-  virtual void onError();
-  virtual void onResize();
-  virtual void glLoop();
+  virtual void onKeydown(GLFWwindow* window, int key, int code, int a, int mod);
+  virtual void onError(int error, const char* desc);
+  virtual void onResize(GLFWwindow* window, int width, int height);
+  virtual void glLoop() = 0;
 
   GLFWwindow* window() const;
 
