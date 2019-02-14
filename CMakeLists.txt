@@ -17,6 +17,8 @@ target_include_directories("glad" PRIVATE "${GLAD_INCLUDE_DIR}")
 set(STB_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extern/stb/")
 
 add_library(navviz
+  src/Environment.cpp
+  src/GlfwWrapper.cpp
   src/Camera.cpp)
 target_include_directories(navviz
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
