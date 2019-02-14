@@ -15,8 +15,8 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
-#include "Shader.h"
-#include "Camera.h"
+#include "navviz/Shader.h"
+#include "navviz/Camera.h"
 
 void processInput(GLFWwindow *window);
 void mouse_callback(GLFWwindow *window, double xpos, double ypos);
