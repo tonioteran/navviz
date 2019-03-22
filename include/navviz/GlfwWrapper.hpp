@@ -15,26 +15,39 @@
 
 namespace vv {
 
+//! Class for encapsulating GLFW's C API
+/*!
+  Provides generic templates for the API's callbacks to be customized through
+  polymorfism. It hides OpenGL's configuration boilerplate code from the user.
+ */
 class GlfwWrapper {
 
- public:
+public:
+  GLFWwindow *window_;
 
-  GLFWwindow* window_;
-  
-  // constructors, destructors
+  //! Constructor: initializes GLFW, creates window, and sets as curr context
   GlfwWrapper(const std::string &scr_title, int scr_width, int scr_height);
+
+  //! Destructor: destroys window object and terminates GLFW
   virtual ~GlfwWrapper();
 
+  //! Calls glfwLoop
   void start();
+
+  //! Executes main render loop, swaps buffers and polls for external inputs
   void glfwLoop();
 
-  virtual void onKeydown(GLFWwindow* window, int key, int code, int a, int mod);
-  virtual void onError(int error, const char* desc);
-  virtual void onResize(GLFWwindow* window, int width, int height);
+  //! Main render loop, to be implemented by child class. Called in glfwLoop
   virtual void glLoop() = 0;
 
-  GLFWwindow* window() const { return window_; };
+  // Callbacks:
+  virtual void onKeydown(GLFWwindow *window, int key, int code, int a,
+                         int mod) = 0;
+  virtual void onError(int error, const char *desc) = 0;
+  virtual void onResize(GLFWwindow *window, int width, int height);
 
+  // Getters:
+  GLFWwindow *window() const { return window_; };
 };
 
 } // namespace vv

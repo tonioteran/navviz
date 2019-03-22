@@ -15,52 +15,38 @@ namespace vv {
 GlfwWrapper::GlfwWrapper(const std::string &scr_title, int scr_width,
                          int scr_height) {
   if (!glfwInit()) {
-    throw std::runtime_error ("Unable to initialize glfw");
+    throw std::runtime_error("Unable to initialize glfw");
   }
 
-  window_ = glfwCreateWindow(scr_width, scr_height,
-                             scr_title.c_str(), NULL, NULL);
+  window_ =
+      glfwCreateWindow(scr_width, scr_height, scr_title.c_str(), NULL, NULL);
   if (!window_) {
-    throw std::runtime_error ("Unable to initialize glfw window");
+    throw std::runtime_error("Unable to initialize glfw window");
   }
   glfwMakeContextCurrent(window_);
-  glfwSwapInterval(1); // TODO: find out what this does exactly?
+  glfwSwapInterval(1);
 }
 
 /* ************************************************************************** */
 GlfwWrapper::~GlfwWrapper() {
-  glfwDestroyWindow(window_); // TODO: find out what this does exactly?
+  glfwDestroyWindow(window_);
   glfwTerminate();
 }
 
 /* ************************************************************************** */
-void GlfwWrapper::onKeydown(GLFWwindow* window, int key, int code, int a, int mod) {
-  // Does nothing by default. Override to customize
-}
-  
-/* ************************************************************************** */
-void GlfwWrapper::onError(int error, const char* desc) {
-  // Does nothing by default
-}
-
-/* ************************************************************************** */
-void GlfwWrapper::onResize(GLFWwindow* window, int width, int height) {
+void GlfwWrapper::onResize(GLFWwindow *window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
 /* ************************************************************************** */
-void GlfwWrapper::start() {
-  glfwLoop();
-}
+void GlfwWrapper::start() { glfwLoop(); }
 
 /* ************************************************************************** */
 void GlfwWrapper::glfwLoop() {
-  this->glLoop();
+  this->glLoop(); // to be implemented by child class
 
   glfwSwapBuffers(window_);
   glfwPollEvents();
-  std::cout << "reach the end of glfwLoop" << std::endl;
 }
-
 
 } // namespace vv
