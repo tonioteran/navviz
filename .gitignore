@@ -56,4 +56,8 @@ build/
 ###########
 *.blend
 
-
+# spacemacs #
+#############
+GPATH
+GRTAGS
+GTAGS
