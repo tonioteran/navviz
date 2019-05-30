@@ -14,4 +14,10 @@ find_package(QGLViewer REQUIRED)
 add_executable(simpleViewer main.cpp simpleViewer.cpp)
 target_link_libraries(simpleViewer Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_LIBRARY})
 
-add_subdirectory(manipulatedFrame)
+add_executable(manipulatedFrame manipulatedFrame/main.cpp manipulatedFrame/manipulatedFrame.cpp)
+target_link_libraries(manipulatedFrame Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_LIBRARY})
+
+add_executable(frameTransform frameTransform/main.cpp frameTransform/frameTransform.cpp)
+target_link_libraries(frameTransform Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_LIBRARY})
+
+# add_subdirectory(manipulatedFrame)
