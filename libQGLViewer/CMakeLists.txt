@@ -12,4 +12,4 @@ find_package(OpenGL REQUIRED) # required by QGLViewer
 find_package(QGLViewer REQUIRED)
 
 add_executable(simpleViewer main.cpp simpleViewer.cpp)
-target_link_libraries(simpleViewer Qt5::Xml Qt5::OpenGL OpenGL QGLViewer)
+target_link_libraries(simpleViewer Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_LIBRARY})
