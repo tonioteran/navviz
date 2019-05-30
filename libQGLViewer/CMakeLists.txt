@@ -20,4 +20,7 @@ target_link_libraries(manipulatedFrame Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_L
 add_executable(frameTransform frameTransform/main.cpp frameTransform/frameTransform.cpp)
 target_link_libraries(frameTransform Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_LIBRARY})
 
+add_executable(animation animation/main.cpp animation/animation.cpp)
+target_link_libraries(animation Qt5::Xml Qt5::OpenGL OpenGL ${QGLVIEWER_LIBRARY})
+
 # add_subdirectory(manipulatedFrame)
